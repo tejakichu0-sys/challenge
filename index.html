@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmer Support Scheme Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5fff5;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #43a047;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    section {
+      background-color: white;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+
+    ul.items-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul.items-list li {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #1b5e20;
+    }
+
+    #formMessage {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Farmer Support Scheme Dashboard</h1>
+    <p>Providing seeds, fertilizers, and tools for a better future</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#items">Available Items</a>
+    <a href="#apply">Apply Now</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About the Scheme</h2>
+      <p>
+        Our government/company has introduced a support scheme to empower farmers by providing them with essential agricultural resources including high-quality seeds, natural fertilizers, and tools.
+        This initiative is aimed at improving crop yield, sustainability, and the livelihoods of farmers across the region.
+      </p>
+    </section>
+
+    <!-- Items Section -->
+    <section id="items">
+      <h2>Available Seeds & Accessories</h2>
+      <ul class="items-list">
+        <li>
+          <strong>Organic Wheat Seeds</strong><br>
+          Description: High-yield, pest-resistant wheat seeds for various climates.
+        </li>
+        <li>
+          <strong>Natural Compost Fertilizer</strong><br>
+          Description: 100% organic compost made from natural waste, suitable for all crops.
+        </li>
+        <li>
+          <strong>Drip Irrigation Kit</strong><br>
+          Description: Water-efficient irrigation system for small to medium farms.
+        </li>
+        <li>
+          <strong>Hand Tools Set</strong><br>
+          Description: Includes hoe, trowel, pruning shears and rake.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Apply Section -->
+    <section id="apply">
+      <h2>Apply for Support</h2>
+      <form id="supportForm">
+        <label for="farmerName">Farmer's Full Name:</label>
+        <input type="text" id="farmerName" name="farmerName" required>
+
+        <label for="village">Village/Town:</label>
+        <input type="text" id="village" name="village" required>
+
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" required pattern="[0-9]{10}">
+
+        <label for="itemNeeded">Item Needed:</label>
+        <select id="itemNeeded" name="itemNeeded" required>
+          <option value="">-- Select an Item --</option>
+          <option value="Wheat Seeds">Organic Wheat Seeds</option>
+          <option value="Compost Fertilizer">Natural Compost Fertilizer</option>
+          <option value="Irrigation Kit">Drip Irrigation Kit</option>
+          <option value="Tools Set">Hand Tools Set</option>
+        </select>
+
+        <label for="reason">Why do you need this support?</label>
+        <textarea id="reason" name="reason" rows="5" required></textarea>
+
+        <button type="submit">Submit Application</button>
+        <div id="formMessage"></div>
+      </form>
+    </section>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Farmer Support Initiative. All rights reserved.
+  </footer>
+
+  <script>
+    // Form submission handler
+    document.getElementById('supportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('farmerName').value;
+      const item = document.getElementById('itemNeeded').value;
+
+      const message = `Thank you, ${name}! Your request for "${item}" has been submitted.`;
+      document.getElementById('formMessage').textContent = message;
+
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
